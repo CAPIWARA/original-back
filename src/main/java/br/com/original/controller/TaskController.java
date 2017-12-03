@@ -20,9 +20,9 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @RequestMapping(value = "/task", method = RequestMethod.GET)
-    public List<Task> taskList() {
-        return taskService.listAll();
+    @RequestMapping(value = "/task/{idchild}", method = RequestMethod.GET)
+    public List<Task> taskList(@PathVariable("idchild") Integer idchild) {
+        return taskService.findByIdchild(idchild);
     }
 
     @RequestMapping(value = "/task", method = RequestMethod.POST)

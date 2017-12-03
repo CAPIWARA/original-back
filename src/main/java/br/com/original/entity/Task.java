@@ -17,6 +17,7 @@ public class Task {
     private float reward;
     @Enumerated(EnumType.STRING)
     private Recurrence recurrence;
+    private Integer idchild;
 
     public Long getId() {
         return id;
@@ -66,6 +67,14 @@ public class Task {
         this.recurrence = recurrence;
     }
 
+    public Integer getIdchild() {
+        return idchild;
+    }
+
+    public void setIdchild(Integer idchild) {
+        this.idchild = idchild;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
@@ -75,6 +84,7 @@ public class Task {
                 ", status=" + status +
                 ", reward=" + reward +
                 ", recurrence=" + recurrence +
+                ", idchild=" + idchild +
                 '}';
     }
 }

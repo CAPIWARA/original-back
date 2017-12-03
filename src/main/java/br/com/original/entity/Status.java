@@ -6,6 +6,7 @@ package br.com.original.entity;
 
 public enum Status {
     pending,
+    created,
     completed,
     deleted;
 }

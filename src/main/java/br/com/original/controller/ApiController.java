@@ -23,7 +23,7 @@ public class ApiController {
     @Autowired
     CallbackService callbackService;
 
-    @RequestMapping(value = "/registerCliente/{id}")
+        @RequestMapping(value = "/registerCliente/{id}")
     public String registerClient(@PathVariable("id") Integer id) throws IOException {
        return originalAuth.getAuth(id);
     }

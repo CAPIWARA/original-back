@@ -16,6 +16,8 @@ public class Callback {
     private String euid;
     @Column(columnDefinition = "TEXT")
     private String bearer;
+    private String name;
+    private String conta;
 
     public Callback(String callback_id, String auth_code, String euid) {
         this.callback_id = Integer.parseInt(callback_id.replaceAll("\\D", ""));
@@ -58,13 +60,19 @@ public class Callback {
         this.bearer = bearer;
     }
 
-    @Override
-    public String toString() {
-        return "Callback{" +
-                "callback_id=" + callback_id +
-                ", auth_code='" + auth_code + '\'' +
-                ", euid='" + euid + '\'' +
-                ", bearer='" + bearer + '\'' +
-                '}';
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getConta() {
+        return conta;
+    }
+
+    public void setConta(String conta) {
+        this.conta = conta;
     }
 }

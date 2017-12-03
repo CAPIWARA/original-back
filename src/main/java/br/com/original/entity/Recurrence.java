@@ -7,5 +7,7 @@ public enum Recurrence {
     none,
     daily,
     weekly,
-    monthly
+    monthly,
+    bianual,
+    anual
 }

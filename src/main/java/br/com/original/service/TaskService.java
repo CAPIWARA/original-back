@@ -16,17 +16,18 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-    public List<Task> listAll() {
-        return (List<Task>) taskRepository.findAll();
-    }
-
     public Task addTask(Task task) {
         taskRepository.save(task);
         return task;
     }
+
     public Task changeTask(Task task) {
         taskRepository.save(task);
         System.out.println("SERVICE: " + task.toString());
         return task;
+    }
+
+    public List<Task> findByIdchild(Integer idchild) {
+        return taskRepository.findByIdchild(idchild);
     }
 }

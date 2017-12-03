@@ -24,10 +24,14 @@ public class CallbackService {
         return callback;
     }
 
-    public String getBalance(Integer id) throws IOException {
+    public Object getBalance(Integer id) throws IOException {
         Callback callback = callbackRepository.findOne(id);
-        System.out.println(originalService
-                .methodGetOriginal("/accounts/v1/balance", callback.getBearer()));
-        return "alo";
+        return originalService
+                .methodGetOriginal("/accounts/v1/balance", callback.getBearer());
+    }
+
+    public Object getHistory(Integer id) throws IOException {
+        Callback callback = callbackRepository.findOne(id);
+        return originalService.methodGetOriginal("/accounts/v1/transaction-history", callback.getBearer());
     }
 }
