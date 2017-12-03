@@ -1,16 +1,15 @@
 package br.com.original.controller;
 
-import br.com.original.config.Constants;
 import br.com.original.config.OriginalAuth;
 import br.com.original.entity.Callback;
 import br.com.original.service.CallbackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.IOException;
 
 /**
  * Created by @cardosomarcos on 02/12/17
@@ -23,6 +22,11 @@ public class ApiController {
 
     @Autowired
     CallbackService callbackService;
+
+    @RequestMapping(value = "/registerCliente/{id}")
+    public String registerClient(@PathVariable("id") Integer id) throws IOException {
+       return originalAuth.getAuth(id);
+    }
 
     @RequestMapping(value = "/myapp")
     public Callback home(HttpServletRequest request) throws Exception {

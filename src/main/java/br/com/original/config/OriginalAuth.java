@@ -6,10 +6,8 @@ import com.google.gson.Gson;
 import com.squareup.okhttp.*;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * Created by @cardosomarcos on 02/12/17
@@ -17,23 +15,22 @@ import java.util.Map;
 @Service
 public class OriginalAuth {
 
-    public static String domain = "https://sb-autenticacao-api.original.com.br/";
+
     public String auth = null;
     private static final MediaType MediaTypeJSON = MediaType
             .parse("application/json; charset=utf-8");
 
-    @PostConstruct
-    public void getAuth(Integer id) throws IOException {
+    public String getAuth(Integer id) throws IOException {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url(domain + "OriginalConnect/?scopes=account,investiment&callback_url=http://localhost:8080/myapp&callback_id="+id+"&developer_key=" + Constants.DEVELOPERKEY)
+                .url(Constants.AUTH_DOMAIN + "OriginalConnect/?scopes=account,investiment&callback_url=http://localhost:8080/myapp&callback_id=" + id + "&developer_key=" + Constants.DEVELOPERKEY)
                 .build();
         Response response = client.newCall(request).execute();
-        System.out.println("VALOR DA RESPOSTA: " + response);
+        return response.request().url().toString();
     }
 
     public String generateToken(String uid, String auth_code, String developer_key, String secret_key) throws Exception {
-        String url = domain + "OriginalConnect/AccessTokenController";
+        String url = Constants.AUTH_DOMAIN + "OriginalConnect/AccessTokenController";
         OkHttpClient httpclient = new OkHttpClient();
         ObjectMapper mapper = new ObjectMapper();
         LinkedHashMap<String, String> auth = new LinkedHashMap<>();
