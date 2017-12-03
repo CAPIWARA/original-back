@@ -26,7 +26,12 @@ public class ChatbotController {
     }
 
     @RequestMapping(value = "/textToSpeech/{text}")
-    public Request textToSpeech(@PathVariable("text") String text) throws IOException {
+    public String textToSpeech(@PathVariable("text") String text) throws IOException {
         return chatbotService.getUrlaudio(text);
+    }
+
+    @RequestMapping(value="/chatbot/{text}")
+    public String chatbox(@PathVariable("text")String text) throws IOException {
+        return chatbotService.getChat(text);
     }
 }
